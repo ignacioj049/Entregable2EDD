@@ -131,3 +131,21 @@ Tree::~Tree()
     destruir(root->firstChild);
     delete root;
 }
+
+void Tree::listar()
+{ // se recorre el arbol en preorder e imprime los id de los libros
+    cout << "IDs en preorder:\n";
+    listar_recursivo(root->firstChild);
+}
+
+void Tree::borrar_ratings(float r)
+{ // se elimina del arbol todos los libros con rating menor o igual a r
+    root->firstChild = borrar_ratings_recursivo(root->firstChild, r);
+    cout << "Libros con rating <= " << r << " eliminados.\n";
+}
+
+void Tree::precursores()
+{ // imprime los id de los libros que solo tienen libros similares publicados en años posteriores al libro padre
+    cout << "IDs de libros precursores:\n";
+    precursores_recursivo(root->firstChild);
+}
